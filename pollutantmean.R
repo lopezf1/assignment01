@@ -21,5 +21,4 @@ pollutantmean <- function(directory, pollutant, id=1:332) {
     }
 }
 
-pollutantmean("specdata", "sulfate", 1:10)
 

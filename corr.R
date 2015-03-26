@@ -10,17 +10,14 @@ setwd("~/Coursera/Assignment01")
 corr <- function(directory, threshold=0) {
     files <- list.files(directory, full.names=TRUE)
     num <- length(files)
-    cr <- vector(mode="numeric", length=0)
+    result <- vector(mode="numeric", length=0)
     for (i in 1:num) {
         df <- read.csv(files[i])
         count <- length(which(df$sulfate != "NA" & df$nitrate != "NA"))
         if(count > threshold) {
-            cr <- append(cr, cor(df$sulfate, df$nitrate, use="pairwise.complete.obs"))
+            result <- append(result, cor(df$sulfate, df$nitrate, use="pairwise.complete.obs"))
         }
     }
-    print(head(cr), digits=4) 
-    print(summary(cr), digits=3)
-    print(length(cr))
+    return(result)
 }
 
-corr("specdata", 400)
